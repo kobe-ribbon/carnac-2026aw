@@ -374,6 +374,7 @@
   <div class="btn-row">
     <a href="#shipping-modal" class="btn-primary"
        data-form-url="https://docs.google.com/forms/d/e/1FAIpQLScyyfH63HgexUOUM4c_Pyj7Jsz8T2NS733NxF7ee2mjzm9Q_w/viewform"
+       data-form-note-id="form-note-shesay"
        data-deadline-cta="2026-06-12T15:00:00+09:00" data-deadline-label="ご予約受付終了"
        onclick="return openShippingModal(event, this);">
       shesay 大阪会場に予約する
@@ -418,6 +419,7 @@
   <div class="btn-row">
     <a href="#shipping-modal" class="btn-primary"
        data-form-url="https://docs.google.com/forms/d/e/1FAIpQLSeReohcbU6GW5tU8eDVFtOk_jSgQV99UPz9kg3eoyc-V_eo7g/viewform"
+       data-form-note-id="form-note-youzen"
        data-deadline-cta="2026-06-25T12:00:00+09:00" data-deadline-label="ご予約受付終了"
        onclick="return openShippingModal(event, this);">
       友膳 大阪会場に予約する
@@ -466,6 +468,7 @@
   <div class="btn-row">
     <a href="#shipping-modal" class="btn-primary"
        data-form-url="https://forms.gle/n3eJ1mZa777MsVmv6"
+       data-form-note-id="form-note-carnac"
        data-deadline-cta="2026-07-03T00:00:00+09:00" data-deadline-label="ご予約受付終了"
        onclick="return openShippingModal(event, this);">
       CARNAC 大阪会場に予約する
@@ -538,7 +541,9 @@
 <!-- ===== 直送注意モーダル ===== -->
 <div id="shipping-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="shipping-modal-title">
   <div class="modal-panel">
-    <h4 id="shipping-modal-title">⚠ お申込み前に必ずご確認ください（直送品のお届けについて）</h4>
+    <h4 id="shipping-modal-title">⚠ お申込み前に必ずご確認ください</h4>
+
+    <p style="margin:0 0 0.4em; font-weight:bold; color:#1f5132;">【1. 直送品のお届けについて】</p>
     <p>
       本展示会で取り扱うメーカー商品は <strong>メーカーから貴店への直送のみ</strong> でのお手配となります。
     </p>
@@ -546,7 +551,14 @@
       お届け時、配送ドライバーが <strong>お届け先を確認するための「会社名」または「お教室名」などの看板・社名表示</strong> が必要です。
       お届け先に該当の表示がない場合、メーカー側で <strong>お荷物をお受け渡しできません</strong> のでご注意ください。
     </p>
-    <p style="font-size:14px; color:#555;">
+
+    <!-- per-supplier 帳合先文言を JS で <template> から複製注入（data-form-note-id 未指定なら .modal-form-note ごと非表示） -->
+    <div class="modal-form-note" style="margin-top:1em; padding:12px 16px; background:#fff8e6; border-left:4px solid #e6a700; border-radius:4px; display:none;">
+      <p style="margin:0 0 0.4em; font-weight:bold; color:#8a5a00;">【2. ご予約フォーム入力時のお願い（帳合先）】</p>
+      <div id="modal-form-note-body" style="margin:0; font-size:14.5px; color:#333; line-height:1.85;"></div>
+    </div>
+
+    <p style="font-size:14px; color:#555; margin-top:1em;">
       上記をご了承いただいたうえで、お申込みフォームへお進みください。
     </p>
     <div class="modal-actions">
@@ -555,6 +567,25 @@
     </div>
   </div>
 </div>
+
+<!-- 各社 form-note (モーダルに動的注入される。<template> は描画されない) -->
+<template id="form-note-shesay">
+  shesay の予約フォームには <strong>帳合先専用の入力欄がありません</strong>。フォーム最下部の
+  <span class="field">その他（ご質問、連絡事項等）</span> 欄に、必ず
+  <strong>「帳合先：神戸リボン」</strong> とご記入のうえご送信ください。
+</template>
+<template id="form-note-youzen">
+  フォーム内
+  <span class="field">帳合先をどこか通されますか？</span>
+  で <strong>「はい」</strong> を選択し、続く
+  <span class="field">帳合先様名</span>
+  欄に <strong>「神戸リボン」</strong> とご入力ください。
+</template>
+<template id="form-note-carnac">
+  フォーム内
+  <span class="field">帳合先名（帳合先を通す方のみ）</span>
+  欄に、必ず <strong>「神戸リボン」</strong> とご入力ください。
+</template>
 
 <script>
 // 申込締切後にCTAボタンを自動でグレーアウト＋文言差し替え（data-deadline-cta が空なら何もしない）
@@ -590,14 +621,31 @@ function openShippingModal(event, btn) {
   var formUrl = btn.getAttribute('data-form-url');
   var confirmLink = document.getElementById('shipping-confirm');
   if (formUrl && confirmLink) confirmLink.setAttribute('href', formUrl);
+
+  // per-supplier 帳合先文言を <template> から複製注入
+  // data-form-note-id 未指定 / テンプレ無しなら .modal-form-note ごと非表示
+  var noteId = btn.getAttribute('data-form-note-id');
+  var noteWrap = document.querySelector('#shipping-modal .modal-form-note');
+  var noteBody = document.getElementById('modal-form-note-body');
+  if (noteWrap && noteBody) {
+    while (noteBody.firstChild) noteBody.removeChild(noteBody.firstChild);
+    var tpl = noteId ? document.getElementById(noteId) : null;
+    if (tpl && tpl.content) {
+      noteBody.appendChild(tpl.content.cloneNode(true));
+      noteWrap.style.display = '';
+    } else {
+      noteWrap.style.display = 'none';
+    }
+  }
+
   var modal = document.getElementById('shipping-modal');
   var panel = modal ? modal.querySelector('.modal-panel') : null;
   if (modal && panel) {
     // iframe (scrolling="no") では scrollY=0、getBoundingClientRect().top はドキュメント内絶対位置
     var rect = btn.getBoundingClientRect();
     var btnTopInDoc = rect.top + (window.scrollY || window.pageYOffset || 0);
-    // ボタンより少し上に panel を配置（パネル想定高 ~380px、上 80px の余裕）
-    var desiredTop = Math.max(20, btnTopInDoc - 380);
+    // ボタンより少し上に panel を配置（注入後の伸び分を考慮して 460px 上に）
+    var desiredTop = Math.max(20, btnTopInDoc - 460);
     panel.style.marginTop = desiredTop + 'px';
     modal.classList.add('is-open');
   }
