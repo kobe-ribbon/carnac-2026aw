@@ -1,5 +1,5 @@
 # 神戸リボン 公開ページから参照する Google Forms (取引先各社の公開予約フォーム) を許可。
 # Forms 自体は ANYONE_WITH_LINK で受付するための公開エンドポイントであり credential ではない。
 # 詳細: ~/.claude/rules/maintenance.md「Google Workspace ID のコーディングルール」例外節
-index.html:google-docs-url:221
-index.html:google-docs-url:252
+index.html:google-docs-url:335
+index.html:google-docs-url:379

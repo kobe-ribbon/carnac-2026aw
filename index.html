@@ -101,12 +101,81 @@
     border-radius: 6px;
     border: 1px solid #e2e2e2;
   }
+  .supplier-image.portrait {
+    width: auto;
+    max-width: 100%;
+    max-height: 520px;
+    margin: 1em auto 1.2em;
+  }
   .supplier-image-caption {
     margin: -0.6em 0 1.4em;
     font-size: 12px;
     color: #888;
     text-align: right;
     line-height: 1.5;
+  }
+  /* ===== 直送注意モーダル ===== */
+  .modal-backdrop {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 16px;
+    overflow-y: auto;
+  }
+  .modal-backdrop.is-open { display: flex; }
+  .modal-panel {
+    background: #fff;
+    border-radius: 10px;
+    max-width: 540px;
+    width: 100%;
+    padding: 26px 24px 22px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.25);
+    line-height: 1.85;
+  }
+  .modal-panel h4 {
+    margin: 0 0 0.8em;
+    font-size: 19px;
+    color: #1f5132;
+    border-bottom: 2px solid #2d6a4f;
+    padding-bottom: 0.5em;
+  }
+  .modal-panel p {
+    margin: 0 0 1em;
+    font-size: 15px;
+    color: #333;
+  }
+  .modal-panel .modal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 1.2em;
+  }
+  .modal-panel .btn-cancel {
+    display: inline-block;
+    padding: 12px 22px;
+    background: #fff;
+    color: #555;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .modal-panel .btn-confirm {
+    display: inline-block;
+    padding: 12px 22px;
+    background: #2d6a4f;
+    color: #fff !important;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
   }
   .supplier-block table {
     width: 100%;
@@ -192,14 +261,9 @@
 <body>
 <div class="container">
 
-<!-- ===== ヘッダー ===== -->
-<div style="margin:0.5em 0 1.5em; padding:28px 24px; background:linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 100%); color:#fff; border-radius:8px; text-align:center;">
-  <div style="font-size:13px; letter-spacing:0.3em; color:#e0a868; margin-bottom:0.6em;">SUMMER EXHIBITIONS 2026 / OSAKA</div>
-  <div style="font-size:26px; font-weight:bold; line-height:1.5; margin-bottom:0.4em;">2026 夏 関西展示会<br>主要 3 社まとめてご案内</div>
-  <div style="font-size:15px; line-height:1.7; color:#ddd;">shesay（志成販売）／ 株式会社 友膳 ／ 株式会社カルナック</div>
-  <div style="margin-top:1em; padding:8px 16px; display:inline-block; background:#2d6a4f; color:#fff; font-size:17px; font-weight:bold; border-radius:4px;">
-    2026年6月8日(月) 〜 7月3日(金) ／ 大阪
-  </div>
+<!-- ===== ヘッダー（画像） ===== -->
+<div style="margin:0.5em 0 1.5em;">
+  <img src="hero.jpg" alt="2026 夏 関西展示会 主要 3 社まとめてご案内 — shesay・友膳・CARNAC" style="display:block; width:100%; max-width:100%; height:auto; border-radius:8px;">
 </div>
 
 <!-- ===== リード ===== -->
@@ -267,8 +331,10 @@
   </div>
 
   <div class="btn-row">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScyyfH63HgexUOUM4c_Pyj7Jsz8T2NS733NxF7ee2mjzm9Q_w/viewform" target="_blank" rel="noopener" class="btn-primary"
-       data-deadline-cta="2026-06-12T15:00:00+09:00" data-deadline-label="ご予約受付終了">
+    <a href="#shipping-modal" class="btn-primary"
+       data-form-url="https://docs.google.com/forms/d/e/1FAIpQLScyyfH63HgexUOUM4c_Pyj7Jsz8T2NS733NxF7ee2mjzm9Q_w/viewform"
+       data-deadline-cta="2026-06-12T15:00:00+09:00" data-deadline-label="ご予約受付終了"
+       onclick="return openShippingModal(event, this);">
       shesay 大阪展に予約する
     </a>
     <a href="https://shiseihanbai.biz/uploads/catalog/26SB-catalog.pdf" target="_blank" rel="noopener" class="btn-secondary">
@@ -285,8 +351,8 @@
 <div class="supplier-block">
   <div class="lead">YOU-ZEN</div>
   <h4>株式会社 友膳 自社展示会 大阪会場</h4>
-  <img src="catalog-thumbs/youzen-hero.jpg" alt="株式会社 友膳 ガーデン雑貨イメージ — オリジナル植木鉢にサボテン・グリーンを寄せ植えしたスタイリング" class="supplier-image" loading="lazy">
-  <div class="supplier-image-caption">画像出典: 株式会社 友膳 公式サイト</div>
+  <img src="catalog-thumbs/youzen-catalog.jpg" alt="株式会社 友膳 NOUVELLE SÉLECTION SPRING &amp; SUMMER 2026 カタログ表紙" class="supplier-image portrait" loading="lazy">
+  <div class="supplier-image-caption">画像出典: 株式会社 友膳 NOUVELLE SÉLECTION SS 2026 カタログ</div>
   <p class="intro">
     愛知県春日井市の <strong>株式会社 友膳</strong> による大阪展示会。食器絵付業から始まり、現在は <strong>ガーデン雑貨・生活雑貨・インテリア用品</strong> のオリジナル商品を年間 1,500 アイテム以上開発しています。人気の樹脂プランターをはじめ、秋冬の新作を一堂にご覧いただけます。
   </p>
@@ -309,8 +375,10 @@
   </div>
 
   <div class="btn-row">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeReohcbU6GW5tU8eDVFtOk_jSgQV99UPz9kg3eoyc-V_eo7g/viewform" target="_blank" rel="noopener" class="btn-primary"
-       data-deadline-cta="2026-06-25T12:00:00+09:00" data-deadline-label="ご予約受付終了">
+    <a href="#shipping-modal" class="btn-primary"
+       data-form-url="https://docs.google.com/forms/d/e/1FAIpQLSeReohcbU6GW5tU8eDVFtOk_jSgQV99UPz9kg3eoyc-V_eo7g/viewform"
+       data-deadline-cta="2026-06-25T12:00:00+09:00" data-deadline-label="ご予約受付終了"
+       onclick="return openShippingModal(event, this);">
       友膳 大阪展に予約する
     </a>
     <a href="https://you-zen.co.jp/web-catalog/" target="_blank" rel="noopener" class="btn-secondary">
@@ -327,8 +395,8 @@
 <div class="supplier-block">
   <div class="lead">CARNAC</div>
   <h4>CARNAC 2026 秋冬 新作展示会 大阪会場</h4>
-  <img src="catalog-thumbs/carnac-catalogs.jpg" alt="CARNAC 商品カタログ — 2026 REGULAR CATALOGUE vol.19（最新）と 2025AW CATALOGUE の表紙" class="supplier-image" loading="lazy">
-  <div class="supplier-image-caption">画像出典: 株式会社カルナック デジタルカタログページ</div>
+  <img src="catalog-thumbs/carnac-catalog.jpg" alt="CARNAC 2026 REGULAR CATALOGUE vol.19 表紙" class="supplier-image portrait" loading="lazy">
+  <div class="supplier-image-caption">画像出典: 株式会社カルナック 2026 REGULAR CATALOGUE vol.19</div>
   <p class="intro">
     <strong>ガーデン雑貨・植木鉢・フラワー用品</strong> を中心に、トレンドを取り入れた商品開発・輸入卸を手がける <strong>株式会社カルナック</strong> による「2026 秋冬 新作展示会」。秋冬のディスプレイ・ギフト企画のヒント探しに最適です。
   </p>
@@ -355,8 +423,10 @@
   </div>
 
   <div class="btn-row">
-    <a href="https://forms.gle/n3eJ1mZa777MsVmv6" target="_blank" rel="noopener" class="btn-primary"
-       data-deadline-cta="2026-07-03T00:00:00+09:00" data-deadline-label="ご予約受付終了">
+    <a href="#shipping-modal" class="btn-primary"
+       data-form-url="https://forms.gle/n3eJ1mZa777MsVmv6"
+       data-deadline-cta="2026-07-03T00:00:00+09:00" data-deadline-label="ご予約受付終了"
+       onclick="return openShippingModal(event, this);">
       CARNAC 大阪展に予約する
     </a>
     <a href="https://www.carnac.jp/catalog/" target="_blank" rel="noopener" class="btn-secondary">
@@ -423,6 +493,27 @@
 
 </div>
 
+<!-- ===== 直送注意モーダル ===== -->
+<div id="shipping-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="shipping-modal-title">
+  <div class="modal-panel">
+    <h4 id="shipping-modal-title">⚠ お申込み前に必ずご確認ください（直送品のお届けについて）</h4>
+    <p>
+      本展示会で取り扱うメーカー商品は <strong>メーカーから貴店への直送のみ</strong> でのお手配となります。
+    </p>
+    <p>
+      お届け時、配送ドライバーが <strong>お届け先を確認するための「会社名」または「お教室名」などの看板・社名表示</strong> が必要です。
+      お届け先に該当の表示がない場合、メーカー側で <strong>お荷物をお受け渡しできません</strong> のでご注意ください。
+    </p>
+    <p style="font-size:14px; color:#555;">
+      上記をご了承いただいたうえで、お申込みフォームへお進みください。
+    </p>
+    <div class="modal-actions">
+      <button type="button" class="btn-cancel" onclick="closeShippingModal()">キャンセル</button>
+      <a id="shipping-confirm" class="btn-confirm" href="#" target="_blank" rel="noopener" onclick="closeShippingModal()">同意して予約フォームへ進む</a>
+    </div>
+  </div>
+</div>
+
 <script>
 // 申込締切後にCTAボタンを自動でグレーアウト＋文言差し替え（data-deadline-cta が空なら何もしない）
 (function() {
@@ -444,6 +535,33 @@
     btn.style.borderColor = '#999';
   });
 })();
+
+// 直送注意モーダル: 申込ボタン経由でフォームURLを表示してから遷移
+function openShippingModal(event, btn) {
+  if (btn.getAttribute('aria-disabled') === 'true') {
+    if (event) event.preventDefault();
+    return false;
+  }
+  if (event) event.preventDefault();
+  var formUrl = btn.getAttribute('data-form-url');
+  var confirmLink = document.getElementById('shipping-confirm');
+  if (formUrl && confirmLink) confirmLink.setAttribute('href', formUrl);
+  var modal = document.getElementById('shipping-modal');
+  if (modal) modal.classList.add('is-open');
+  return false;
+}
+function closeShippingModal() {
+  var modal = document.getElementById('shipping-modal');
+  if (modal) modal.classList.remove('is-open');
+}
+// 背景クリック・ESC で閉じる
+document.addEventListener('click', function(e) {
+  var modal = document.getElementById('shipping-modal');
+  if (modal && e.target === modal) closeShippingModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeShippingModal();
+});
 
 // 親ページ（Weebly）にiframeの高さを通知して自動リサイズしてもらう
 (function() {
