@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 秋冬 関西展示会 3 社まとめてご案内（shesay／友膳／CARNAC）- 神戸リボン</title>
+<title>2026 秋冬 新作展示会 大阪会場 3 社まとめてご案内（shesay／友膳／CARNAC）- 神戸リボン</title>
 <style>
   body {
     margin: 0;
@@ -257,23 +257,34 @@
     font-size: 14px;
     line-height: 1.7;
   }
-  /* 「合わせてご覧ください」カード内の「申込まだ間に合う」バッジ */
+  /* 「合わせてご覧ください」カード内の「申込まだ間に合う」バッジ
+     控えめだが視線を捉える: 1) ふんわり拡大縮小 2) 光が外へ広がるリング 3) 微小グラデーション */
   .recv-badge {
     display: inline-block;
     margin: 4px 0 2px;
-    padding: 4px 10px;
-    background: #e6a700;
+    padding: 5px 12px;
+    background: linear-gradient(135deg, #e6a700 0%, #f0b220 100%);
     color: #fff;
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 0.05em;
     border-radius: 3px;
     box-shadow: 0 1px 3px rgba(230,167,0,0.4);
-    animation: recv-pulse 2s ease-in-out infinite;
+    transform-origin: center;
+    animation: recv-pulse 2.4s ease-in-out infinite;
   }
   @keyframes recv-pulse {
-    0%, 100% { box-shadow: 0 1px 3px rgba(230,167,0,0.4); }
-    50%      { box-shadow: 0 2px 10px rgba(230,167,0,0.7); }
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 1px 3px rgba(230,167,0,0.4), 0 0 0 0 rgba(230,167,0,0.45);
+    }
+    50% {
+      transform: scale(1.035);
+      box-shadow: 0 2px 8px rgba(230,167,0,0.55), 0 0 0 8px rgba(230,167,0,0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .recv-badge { animation: none; }
   }
 </style>
 </head>
@@ -282,12 +293,12 @@
 
 <!-- ===== ヘッダー（画像／縦長） ===== -->
 <div style="margin:0.5em 0 1.5em; text-align:center;">
-  <img src="hero.jpg" alt="秋冬新作コレクション展示会 2026 / OSAKA  2026 秋冬 関西展示会 3 社まとめてご案内  トレンドを先取りした秋冬の新作を、いち早くご提案します  shesay／友膳／CARNAC  2026年6月8日(月)〜7月3日(金)  大阪" style="display:inline-block; width:auto; max-width:100%; max-height:640px; height:auto; border-radius:8px;">
+  <img src="hero.jpg" alt="秋冬新作コレクション展示会 2026 秋冬新作展示会  トレンドを先取りした秋冬の新作を、いち早くご提案します  shesay 日程 6月8日(月)〜12日(金)  友膳 日程 6月24日(水)〜25日(木)  CARNAC 日程 7月1日(水)〜3日(金)" style="display:inline-block; width:auto; max-width:100%; max-height:640px; height:auto; border-radius:8px;">
 </div>
 
 <!-- ===== リード ===== -->
 <p style="line-height:2.0; margin-bottom:1.6em; font-size:16px;">
-2026 年 6 月〜7 月にかけて、神戸リボンお取り扱いメーカー <strong>3 社の 2026 秋冬 関西展示会</strong> が大阪で連続開催されます。<br>
+2026 年 6 月〜7 月にかけて、神戸リボンお取り扱いメーカー <strong>3 社の 2026 秋冬 新作展示会 大阪会場</strong> が連続開催されます。<br>
 <strong>トレンドを先取りした秋冬の新作</strong> をいち早くご覧いただける機会です。秋冬ディスプレイ・新作仕入れ・ギフト企画のヒント探しに、ぜひお揃いでご来場ください。各社、<strong>事前 WEB 予約制</strong> です。
 </p>
 
@@ -304,17 +315,17 @@
 <div class="nav-grid">
   <a href="#shesay" class="nav-card">
     <span class="badge">6/8 - 6/12</span>
-    <div class="name">shesay 2026 秋冬 関西展示会</div>
+    <div class="name">shesay 2026 秋冬 大阪会場</div>
     <div class="meta">服飾＋雑貨 ／ 大阪本社（船場センタービル）</div>
   </a>
   <a href="#youzen" class="nav-card">
     <span class="badge">6/24 - 6/25</span>
-    <div class="name">友膳 2026 秋冬 関西展示会</div>
+    <div class="name">友膳 2026 秋冬 大阪会場</div>
     <div class="meta">ガーデン雑貨・生活雑貨 ／ OMMビル G2ホール</div>
   </a>
   <a href="#carnac" class="nav-card">
     <span class="badge">7/1 - 7/3</span>
-    <div class="name">CARNAC 2026 秋冬 関西展示会</div>
+    <div class="name">CARNAC 2026 秋冬 大阪会場</div>
     <div class="meta">ガーデン雑貨・植木鉢 ／ OMMビル E2ホール</div>
   </a>
 </div>
@@ -322,11 +333,11 @@
 <!-- ===========================
      ① shesay（志成販売）
      =========================== -->
-<h3 class="section-title" id="shesay">① shesay（志成販売）2026 秋冬 関西展示会</h3>
+<h3 class="section-title" id="shesay">① shesay（志成販売）2026 秋冬 大阪会場</h3>
 
 <div class="supplier-block">
   <div class="lead">SHESAY / SHISEI HANBAI</div>
-  <h4>2026 秋冬 関西展示会（服飾＋雑貨／大阪本社）</h4>
+  <h4>2026 秋冬 大阪会場（服飾＋雑貨／大阪本社）</h4>
   <img src="catalog-thumbs/shesay-naikenkai.jpg" alt="shesay 2026 秋冬展示会 出展アイテム一例 — ニット手袋・ファブリック・キャップ・ニットボレロ・スノードーム・くるみ割り人形オーナメントなど" class="supplier-image" loading="lazy">
   <div class="supplier-image-caption">画像出典: shesay 公式 2026 秋冬展示会バナー</div>
   <p class="intro">
@@ -365,11 +376,11 @@
 <!-- ===========================
      ② 株式会社 友膳（you-zen）
      =========================== -->
-<h3 class="section-title" id="youzen">② 株式会社 友膳（you-zen）2026 秋冬 関西展示会</h3>
+<h3 class="section-title" id="youzen">② 株式会社 友膳（you-zen）2026 秋冬 大阪会場</h3>
 
 <div class="supplier-block">
   <div class="lead">YOU-ZEN</div>
-  <h4>2026 秋冬 関西展示会（ガーデン雑貨／OMM 大阪会場）</h4>
+  <h4>2026 秋冬 大阪会場（ガーデン雑貨／OMM ビル G2 ホール）</h4>
   <img src="catalog-thumbs/youzen-catalog.jpg" alt="株式会社 友膳 NOUVELLE SÉLECTION SPRING &amp; SUMMER 2026 カタログ表紙" class="supplier-image portrait" loading="lazy">
   <div class="supplier-image-caption">画像出典: 株式会社 友膳 NOUVELLE SÉLECTION SS 2026 カタログ</div>
   <p class="intro">
@@ -409,11 +420,11 @@
 <!-- ===========================
      ③ CARNAC（カルナック）
      =========================== -->
-<h3 class="section-title" id="carnac">③ CARNAC（カルナック）2026 秋冬 関西展示会</h3>
+<h3 class="section-title" id="carnac">③ CARNAC（カルナック）2026 秋冬 大阪会場</h3>
 
 <div class="supplier-block">
   <div class="lead">CARNAC</div>
-  <h4>2026 秋冬 関西展示会（ガーデン雑貨／OMM 大阪会場）</h4>
+  <h4>2026 秋冬 大阪会場（ガーデン雑貨／OMM ビル E2 ホール）</h4>
   <img src="catalog-thumbs/carnac-catalog.jpg" alt="CARNAC 2026 REGULAR CATALOGUE vol.19 表紙" class="supplier-image portrait" loading="lazy">
   <div class="supplier-image-caption">画像出典: 株式会社カルナック 2026 REGULAR CATALOGUE vol.19</div>
   <p class="intro">
