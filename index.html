@@ -114,27 +114,28 @@
     text-align: right;
     line-height: 1.5;
   }
-  /* ===== 直送注意モーダル ===== */
+  /* ===== 直送注意モーダル (iframe 埋め込み用: position:absolute で親スクロール位置に追従) ===== */
   .modal-backdrop {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    min-height: 100%;
     background: rgba(0,0,0,0.55);
     display: none;
-    align-items: center;
-    justify-content: center;
     z-index: 9999;
-    padding: 16px;
-    overflow-y: auto;
   }
-  .modal-backdrop.is-open { display: flex; }
+  .modal-backdrop.is-open { display: block; }
   .modal-panel {
     background: #fff;
     border-radius: 10px;
     max-width: 540px;
-    width: 100%;
+    width: calc(100% - 32px);
+    box-sizing: border-box;
+    margin: 20px auto 20px;
     padding: 26px 24px 22px;
-    box-shadow: 0 12px 36px rgba(0,0,0,0.25);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.35);
     line-height: 1.85;
+    position: relative;
   }
   .modal-panel h4 {
     margin: 0 0 0.8em;
@@ -556,6 +557,8 @@
 })();
 
 // 直送注意モーダル: 申込ボタン経由でフォームURLを表示してから遷移
+// iframe 埋め込みでは position:fixed が親スクロールに追従しないため、
+// ボタンの位置に合わせて panel の margin-top を動的に設定する
 function openShippingModal(event, btn) {
   if (btn.getAttribute('aria-disabled') === 'true') {
     if (event) event.preventDefault();
@@ -566,7 +569,16 @@ function openShippingModal(event, btn) {
   var confirmLink = document.getElementById('shipping-confirm');
   if (formUrl && confirmLink) confirmLink.setAttribute('href', formUrl);
   var modal = document.getElementById('shipping-modal');
-  if (modal) modal.classList.add('is-open');
+  var panel = modal ? modal.querySelector('.modal-panel') : null;
+  if (modal && panel) {
+    // iframe (scrolling="no") では scrollY=0、getBoundingClientRect().top はドキュメント内絶対位置
+    var rect = btn.getBoundingClientRect();
+    var btnTopInDoc = rect.top + (window.scrollY || window.pageYOffset || 0);
+    // ボタンより少し上に panel を配置（パネル想定高 ~380px、上 80px の余裕）
+    var desiredTop = Math.max(20, btnTopInDoc - 380);
+    panel.style.marginTop = desiredTop + 'px';
+    modal.classList.add('is-open');
+  }
   return false;
 }
 function closeShippingModal() {
@@ -580,6 +592,26 @@ document.addEventListener('click', function(e) {
 });
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeShippingModal();
+});
+
+// ページ内アンカーリンク (#shesay 等) は iframe (scrolling="no") では効かないため、
+// 親 Weebly に postMessage して該当位置までスクロールしてもらう
+document.addEventListener('click', function(e) {
+  var a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  var href = a.getAttribute('href');
+  if (!href || href.length < 2 || href === '#shipping-modal') return;
+  var target = document.querySelector(href);
+  if (!target) return;
+  e.preventDefault();
+  var rect = target.getBoundingClientRect();
+  var offsetInIframe = rect.top + (window.scrollY || window.pageYOffset || 0);
+  if (window.parent && window.parent !== window) {
+    window.parent.postMessage({
+      type: 'kobe-ribbon-iframe-scroll-to',
+      offset: offsetInIframe
+    }, '*');
+  }
 });
 
 // 「合わせてご覧ください」カードの「ご予約受付中」バッジを、イベント終了日時を過ぎたら自動で非表示
