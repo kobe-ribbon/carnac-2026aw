@@ -19,8 +19,8 @@
   h3.section-title {
     margin: 2.8em 0 1.2em;
     padding: 12px 18px;
-    background: #fff5f5;
-    border-left: 6px solid #c8161d;
+    background: #eff7f1;
+    border-left: 6px solid #2d6a4f;
     font-size: 22px;
     color: #222;
   }
@@ -43,12 +43,12 @@
   .nav-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    border-color: #c8161d;
+    border-color: #2d6a4f;
   }
   .nav-card .badge {
     display: inline-block;
     padding: 3px 10px;
-    background: #c8161d;
+    background: #2d6a4f;
     color: #fff;
     font-size: 12px;
     font-weight: bold;
@@ -92,6 +92,22 @@
     font-size: 15px;
     color: #333;
   }
+  .supplier-image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 1em 0 1.2em;
+    border-radius: 6px;
+    border: 1px solid #e2e2e2;
+  }
+  .supplier-image-caption {
+    margin: -0.6em 0 1.4em;
+    font-size: 12px;
+    color: #888;
+    text-align: right;
+    line-height: 1.5;
+  }
   .supplier-block table {
     width: 100%;
     border-collapse: collapse;
@@ -122,7 +138,7 @@
   .btn-primary {
     display: inline-block;
     padding: 14px 28px;
-    background: #c8161d;
+    background: #2d6a4f;
     color: #fff !important;
     font-size: 16px;
     font-weight: bold;
@@ -134,12 +150,34 @@
     display: inline-block;
     padding: 14px 24px;
     background: #fff;
-    color: #c8161d !important;
+    color: #2d6a4f !important;
     font-size: 15px;
     font-weight: bold;
     text-decoration: none;
-    border: 2px solid #c8161d;
+    border: 2px solid #2d6a4f;
     border-radius: 6px;
+  }
+  .form-note {
+    margin: 1.2em 0 0;
+    padding: 12px 16px;
+    background: #f3f9f5;
+    border-left: 4px solid #2d6a4f;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #1f3a2c;
+  }
+  .form-note strong { color: #1f5132; }
+  .form-note .field {
+    display: inline-block;
+    margin: 0 2px;
+    padding: 1px 8px;
+    background: #fff;
+    border: 1px solid #2d6a4f;
+    border-radius: 3px;
+    font-size: 13px;
+    color: #1f5132;
+    font-weight: bold;
   }
   .gift-note {
     margin-top: 1em;
@@ -159,7 +197,7 @@
   <div style="font-size:13px; letter-spacing:0.3em; color:#e0a868; margin-bottom:0.6em;">SUMMER EXHIBITIONS 2026 / OSAKA</div>
   <div style="font-size:26px; font-weight:bold; line-height:1.5; margin-bottom:0.4em;">2026 夏 関西展示会<br>主要 3 社まとめてご案内</div>
   <div style="font-size:15px; line-height:1.7; color:#ddd;">shesay（志成販売）／ 株式会社 友膳 ／ 株式会社カルナック</div>
-  <div style="margin-top:1em; padding:8px 16px; display:inline-block; background:#c8161d; color:#fff; font-size:17px; font-weight:bold; border-radius:4px;">
+  <div style="margin-top:1em; padding:8px 16px; display:inline-block; background:#2d6a4f; color:#fff; font-size:17px; font-weight:bold; border-radius:4px;">
     2026年6月8日(月) 〜 7月3日(金) ／ 大阪
   </div>
 </div>
@@ -170,11 +208,12 @@
 秋冬のディスプレイ・新作仕入れ・ギフト企画のヒント探しに、ぜひお揃いでご来場ください。各社、<strong>事前 WEB 予約制</strong> です。
 </p>
 
-<!-- ===== 帳合先名 共通注意（最重要） ===== -->
-<div style="margin:1.5em 0 2em; padding:18px 22px; background:#fff5f5; border:2px solid #c8161d; border-radius:8px; line-height:1.9;">
-  <p style="margin:0; font-size:16px; color:#c8161d;">
+<!-- ===== 帳合先名 共通注意（要旨のみ・詳細は各社セクション内） ===== -->
+<div style="margin:1.5em 0 2em; padding:18px 22px; background:#eff7f1; border:2px solid #2d6a4f; border-radius:8px; line-height:1.9;">
+  <p style="margin:0; font-size:16px; color:#1f5132;">
     <strong>【3 社共通・ご予約時のお願い】</strong><br>
-    各社のご予約フォーム内 <strong>「帳合先名」</strong>（または取引先名）の欄には、必ず <strong style="font-size:18px;">「神戸リボン」</strong> とご入力ください。
+    各社の予約フォーム上で <strong>「帳合先：神戸リボン」</strong> が必ず伝わるよう、ご入力をお願いいたします。<br>
+    <span style="font-size:14px; color:#555;">※ フォーム上の入力欄の名称・位置は社により異なります。各社セクション内の「ご予約時の注意」をご確認ください。</span>
   </p>
 </div>
 
@@ -205,6 +244,8 @@
 <div class="supplier-block">
   <div class="lead">SHESAY / SHISEI HANBAI</div>
   <h4>2026 Autumn &amp; Winter 服飾＋雑貨 自社展示会</h4>
+  <img src="catalog-thumbs/shesay-naikenkai.jpg" alt="shesay 2026 秋冬展示会 出展アイテム一例 — ニット手袋・ファブリック・キャップ・ニットボレロ・スノードーム・くるみ割り人形オーナメントなど" class="supplier-image" loading="lazy">
+  <div class="supplier-image-caption">画像出典: shesay 公式 2026 秋冬展示会バナー</div>
   <p class="intro">
     志成販売（shesay）の大阪本社で開催される自社展示会。<strong>2026 秋冬の新作インテリア雑貨とファッション雑貨</strong>（アクセサリー・バッグ・ストール・ニット小物・ホームファブリック・キッチン雑貨など）をまとめてご覧いただけます。現行春夏商品の特価コーナーも併設予定です。
   </p>
@@ -216,6 +257,14 @@
     <tr><th>取扱</th><td>インテリア雑貨／ファッション雑貨／アクセサリー／服飾小物</td></tr>
     <tr><th>東京会場</th><td>6月17日(水) 〜 19日(金) 都立産業貿易センター（参考情報）</td></tr>
   </table>
+
+  <div class="form-note">
+    <strong>📝 ご予約時のお願い（shesay フォーム用）</strong><br>
+    shesay の予約フォームには <strong>帳合先専用の入力欄がありません</strong>。フォーム最下部の
+    <span class="field">その他（ご質問、連絡事項等）</span> 欄に、必ず
+    <strong>「帳合先：神戸リボン」</strong>
+    とご記入のうえご送信ください。
+  </div>
 
   <div class="btn-row">
     <a href="https://docs.google.com/forms/d/e/1FAIpQLScyyfH63HgexUOUM4c_Pyj7Jsz8T2NS733NxF7ee2mjzm9Q_w/viewform" target="_blank" rel="noopener" class="btn-primary"
@@ -236,6 +285,8 @@
 <div class="supplier-block">
   <div class="lead">YOU-ZEN</div>
   <h4>株式会社 友膳 自社展示会 大阪会場</h4>
+  <img src="catalog-thumbs/youzen-hero.jpg" alt="株式会社 友膳 ガーデン雑貨イメージ — オリジナル植木鉢にサボテン・グリーンを寄せ植えしたスタイリング" class="supplier-image" loading="lazy">
+  <div class="supplier-image-caption">画像出典: 株式会社 友膳 公式サイト</div>
   <p class="intro">
     愛知県春日井市の <strong>株式会社 友膳</strong> による大阪展示会。食器絵付業から始まり、現在は <strong>ガーデン雑貨・生活雑貨・インテリア用品</strong> のオリジナル商品を年間 1,500 アイテム以上開発しています。人気の樹脂プランターをはじめ、秋冬の新作を一堂にご覧いただけます。
   </p>
@@ -247,6 +298,15 @@
     <tr><th>主催</th><td>株式会社 友膳（<a href="https://you-zen.co.jp/" target="_blank" rel="noopener">you-zen.co.jp</a>）</td></tr>
     <tr><th>取扱</th><td>ガーデン雑貨／生活雑貨／インテリア用品／オリジナル樹脂プランター</td></tr>
   </table>
+
+  <div class="form-note">
+    <strong>📝 ご予約時のお願い（友膳 フォーム用）</strong><br>
+    フォーム内
+    <span class="field">帳合先をどこか通されますか？</span>
+    で「はい」を選択し、続く
+    <span class="field">帳合先様名</span>
+    欄に <strong>「神戸リボン」</strong> とご入力ください。
+  </div>
 
   <div class="btn-row">
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSeReohcbU6GW5tU8eDVFtOk_jSgQV99UPz9kg3eoyc-V_eo7g/viewform" target="_blank" rel="noopener" class="btn-primary"
@@ -267,6 +327,8 @@
 <div class="supplier-block">
   <div class="lead">CARNAC</div>
   <h4>CARNAC 2026 秋冬 新作展示会 大阪会場</h4>
+  <img src="catalog-thumbs/carnac-catalogs.jpg" alt="CARNAC 商品カタログ — 2026 REGULAR CATALOGUE vol.19（最新）と 2025AW CATALOGUE の表紙" class="supplier-image" loading="lazy">
+  <div class="supplier-image-caption">画像出典: 株式会社カルナック デジタルカタログページ</div>
   <p class="intro">
     <strong>ガーデン雑貨・植木鉢・フラワー用品</strong> を中心に、トレンドを取り入れた商品開発・輸入卸を手がける <strong>株式会社カルナック</strong> による「2026 秋冬 新作展示会」。秋冬のディスプレイ・ギフト企画のヒント探しに最適です。
   </p>
@@ -283,6 +345,13 @@
   <div class="gift-note">
     <strong>🎁 ご予約＆ご注文でオリジナルギフトをプレゼント♪</strong><br>
     事前 WEB 予約のうえ会場でご注文いただいたお客様に、カルナックよりオリジナルギフトをご用意しています。
+  </div>
+
+  <div class="form-note">
+    <strong>📝 ご予約時のお願い（CARNAC フォーム用）</strong><br>
+    フォーム内
+    <span class="field">帳合先名（帳合先を通す方のみ）</span>
+    欄に、必ず <strong>「神戸リボン」</strong> とご入力ください。
   </div>
 
   <div class="btn-row">
@@ -302,6 +371,7 @@
   <li style="margin-bottom:0.6em;">ご来場は <strong>小売・卸・装飾・フラワー関連業者様限定</strong> となります。</li>
   <li style="margin-bottom:0.6em;">お子様連れでのご来場はお控えください。</li>
   <li style="margin-bottom:0.6em;">予約フォーム送信後、自動返信メールが届きます。当日まで大切に保管ください。</li>
+  <li style="margin-bottom:0.6em;"><strong>各社フォームには「神戸リボン」が帳合先と分かる形でのご入力をお願いします</strong>（各社セクションの「ご予約時のお願い」参照）。</li>
   <li style="margin-bottom:0.6em;">最新のご案内は各社の公式サイト・展示会案内ページ（上記カタログ／会場情報リンク先）もあわせてご確認ください。</li>
 </ul>
 
@@ -309,7 +379,7 @@
   <p style="margin:0 0 0.8em; font-size:16px; color:#222;">
     <strong>📱 ご注文・お問い合わせは、神戸リボン LINE 公式アカウントへ</strong><br>
     ご注文に関するご相談や各種お問い合わせは、<strong>神戸リボン LINE 公式アカウントにて受付</strong> しております。スムーズなご対応のため、<strong>ご来場前にお友だち追加</strong> をお願いいたします。<br>
-    <small style="color:#c8161d;">※展示会のご予約は各社の予約フォーム（上記ボタン）よりお手続きください。LINE では予約を承っておりません。</small>
+    <small style="color:#2d6a4f;">※展示会のご予約は各社の予約フォーム（上記ボタン）よりお手続きください。LINE では予約を承っておりません。</small>
   </p>
   <div style="text-align:center; margin-top:0.8em;">
     <a href="https://lin.ee/v4E9XHO" target="_blank" rel="noopener" style="display:inline-block; padding:14px 36px; background-color:#06C755; color:#ffffff; font-size:16px; font-weight:bold; text-decoration:none; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.15);">
@@ -327,27 +397,27 @@
 
 <a href="http://www.kobe-ribbon.co.jp/12491125171254012473653811248812500124831246312473/28-2026" target="_top" rel="noopener"
    style="display:flex; gap:18px; padding:18px; border:1px solid #ddd; border-radius:8px; text-decoration:none; color:#222; background:linear-gradient(180deg,#ffffff,#fafafa); transition:transform 0.3s, box-shadow 0.3s, border-color 0.3s; max-width:600px; margin:0 auto 1em; align-items:center;"
-   onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 28px rgba(0,0,0,0.12)';this.style.borderColor='#c8161d'"
+   onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 28px rgba(0,0,0,0.12)';this.style.borderColor='#2d6a4f'"
    onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#ddd'">
   <img src="ohchi-thumb.jpg" alt="第28回 大地農園 内見会 2026 大阪会場" style="width:140px; height:140px; object-fit:cover; flex-shrink:0; border-radius:4px;">
   <div style="flex:1;">
-    <div style="font-size:12px; color:#c8161d; font-weight:bold; letter-spacing:0.18em;">展示会情報</div>
+    <div style="font-size:12px; color:#2d6a4f; font-weight:bold; letter-spacing:0.18em;">展示会情報</div>
     <div style="font-size:17px; font-weight:bold; margin:8px 0; line-height:1.5;">第28回 大地農園 内見会 2026 大阪会場</div>
     <div style="font-size:13px; color:#666; line-height:1.7;">2026年6月4日(木) 〜 5日(金)<br>マイドームおおさか 2F 展示ホールD</div>
-    <div style="font-size:14px; color:#c8161d; font-weight:bold; margin-top:10px;">記事を読む →</div>
+    <div style="font-size:14px; color:#2d6a4f; font-weight:bold; margin-top:10px;">記事を読む →</div>
   </div>
 </a>
 
 <a href="http://www.kobe-ribbon.co.jp/12491125171254012473653811248812500124831246312473/april-27th-2026" target="_top" rel="noopener"
    style="display:flex; gap:18px; padding:18px; border:1px solid #ddd; border-radius:8px; text-decoration:none; color:#222; background:linear-gradient(180deg,#ffffff,#fafafa); transition:transform 0.3s, box-shadow 0.3s, border-color 0.3s; max-width:600px; margin:0 auto 2em; align-items:center;"
-   onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 28px rgba(0,0,0,0.12)';this.style.borderColor='#c8161d'"
+   onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 28px rgba(0,0,0,0.12)';this.style.borderColor='#2d6a4f'"
    onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#ddd'">
   <img src="asca-thumb.jpg" alt="asca FAIR 2026 AW 大阪会場" style="width:140px; height:140px; object-fit:cover; flex-shrink:0; border-radius:4px;">
   <div style="flex:1;">
-    <div style="font-size:12px; color:#c8161d; font-weight:bold; letter-spacing:0.18em;">展示会情報</div>
+    <div style="font-size:12px; color:#2d6a4f; font-weight:bold; letter-spacing:0.18em;">展示会情報</div>
     <div style="font-size:17px; font-weight:bold; margin:8px 0; line-height:1.5;">asca FAIR 2026 AW 大阪会場</div>
     <div style="font-size:13px; color:#666; line-height:1.7;">2026年6月17日(水) 〜 18日(木)<br>大阪産業創造館 3F マーケットプラザ</div>
-    <div style="font-size:14px; color:#c8161d; font-weight:bold; margin-top:10px;">記事を読む →</div>
+    <div style="font-size:14px; color:#2d6a4f; font-weight:bold; margin-top:10px;">記事を読む →</div>
   </div>
 </a>
 
